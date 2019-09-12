@@ -1,6 +1,7 @@
 package data
 
 import (
+	"log"
 	"os"
 
 	"github.com/jinzhu/gorm"
@@ -13,28 +14,12 @@ type SQLiteConn struct {
 	innerConn *gorm.DB
 }
 
-func (conn SQLiteConn) initInstance(db *gorm.DB) {
-
-	conn.innerConn = db
-}
-
 func (conn SQLiteConn) Query(sql string) *gorm.DB {
+	log.Print(conn.innerConn)
 	return conn.innerConn.Raw(sql)
 }
 
 func (conn SQLiteConn) Exec(sql string, args ...interface{}) *gorm.DB {
-	/*
-		stt, errStt := conn.innerConn.Prepare(sql)
-		if errStt != nil {
-			return 0, errStt
-		}
-		result, errExec := stt.Exec(args)
-		if errExec != nil {
-			return 0, errExec
-		}
-		rows, _ := result.RowsAffected()
-		return rows, nil
-	*/
 	return conn.innerConn.Exec(sql, args)
 }
 
@@ -51,10 +36,9 @@ func buildConn() {
 
 	db, err := gorm.Open("sqlite3", dbPath)
 	if err != nil {
-
-		panic(err)
+		log.Panic(err)
 	}
-	GlobalConn.initInstance(db)
+	GlobalConn.innerConn = db
 }
 
 func init() {

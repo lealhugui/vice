@@ -1,5 +1,5 @@
 package data
 
-func GetData() {
-	return
+func init() {
+	buildConn()
 }
