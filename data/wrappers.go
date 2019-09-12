@@ -15,12 +15,11 @@ type SQLiteConn struct {
 }
 
 func (conn SQLiteConn) Query(sql string) *gorm.DB {
-	log.Print(conn.innerConn)
 	return conn.innerConn.Raw(sql)
 }
 
 func (conn SQLiteConn) Exec(sql string, args ...interface{}) *gorm.DB {
-	return conn.innerConn.Exec(sql, args)
+	return conn.innerConn.Exec(sql, args...)
 }
 
 func buildConn() {

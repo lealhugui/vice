@@ -11,7 +11,7 @@ func StartServer() {
 	//r.Use(static.Serve("/", static.LocalFile("./static/", false)))
 
 	r := gin.Default()
-	r.GET("/registerTask", RegisterTask)
+	r.POST("/registerTask", RegisterTask)
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "pong",
