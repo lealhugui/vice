@@ -15,9 +15,10 @@ ifeq ($(OS),Windows_NT)
 	WORKER_BIN_NAME += .exe
 endif
 
-all: clean test build
-build:
+all: clean build-master build-worker
+build-master:
 	$(GOBUILD) -v -o $(MASTER_BIN_NAME) $(MASTER_DIR)
+build-worker:
 	$(GOBUILD) -v -o $(WORKER_BIN_NAME) $(WORKER_DIR)
 test:
 	$(GOTEST) -v ./...

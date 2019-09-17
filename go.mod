@@ -9,4 +9,5 @@ require (
 	github.com/jinzhu/gorm v1.9.10
 	github.com/mattn/go-sqlite3 v1.11.0
 	github.com/prometheus/common v0.6.0
+	gopkg.in/yaml.v2 v2.2.2
 )

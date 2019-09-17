@@ -11,20 +11,20 @@ import (
 var GlobalConn SQLiteConn
 
 type SQLiteConn struct {
-	innerConn *gorm.DB
+	DB *gorm.DB
 }
 
 func (conn SQLiteConn) Query(sql string) *gorm.DB {
-	return conn.innerConn.Raw(sql)
+	return conn.DB.Raw(sql)
 }
 
 func (conn SQLiteConn) Exec(sql string, args ...interface{}) *gorm.DB {
-	return conn.innerConn.Exec(sql, args...)
+	return conn.DB.Exec(sql, args...)
 }
 
 func buildConn() {
 
-	if GlobalConn.innerConn != nil {
+	if GlobalConn.DB != nil {
 		return
 	}
 
@@ -37,7 +37,7 @@ func buildConn() {
 	if err != nil {
 		log.Panic(err)
 	}
-	GlobalConn.innerConn = db
+	GlobalConn.DB = db
 }
 
 func init() {
