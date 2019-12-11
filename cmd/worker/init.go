@@ -13,7 +13,7 @@ import (
 
 	"github.com/lealhugui/vice/cmd/worker/config"
 
-	mainRoutes "github.com/lealhugui/vice/routes"
+	mainRoutes "github.com/lealhugui/vice/routeManager"
 )
 
 func getIPAddr() (string, error) {

@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/gin-gonic/gin"
-	mainRoutes "github.com/lealhugui/vice/routes"
+	mainRoutes "github.com/lealhugui/vice/routeManager"
 	"github.com/prometheus/common/log"
 )
 
